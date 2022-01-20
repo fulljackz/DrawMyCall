@@ -17,8 +17,8 @@ RTP exchanges are indicated only once, avoiding multiple useless lines.
 
 ```
 apt update && apt upgrade
-apt install npm
-nom install mermaid.cli
+apt install npm --no-install-recommends
+npm install mermaid.cli
 ```
 
 > By default mermaid js script is located in `~/node_modules/.bin/mmdc`
@@ -29,6 +29,14 @@ nom install mermaid.cli
 apt update
 apt install python3-pip
 pip3 install pyshark
+```
+
+- Clone this repo and give a try
+
+```
+git clone https://github.com/fulljackz/DrawMyCall.git
+cd DrawMyCall
+./drawmycall.py -t /path/to/pcap
 ```
 
 ## How it works
