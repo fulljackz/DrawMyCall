@@ -1,8 +1,11 @@
 # Draw my call
 
-Simple script to generate a call flow diagram.
+Simple script to generate a call flow diagram from a pcap capture.
+If your pcap capture contains sip and rtp packets, the script will try to generate a diagram as Wireshark do :
 
-It uses [pyshark](https://github.com/KimiNewt/pyshark), [mermaid.js](https://mermaid-js.github.io/mermaid/#/) and others default packaged python3 libraries.
+![Wireshark example](./output/wireshark.png)
+
+The script massively use [pyshark](https://github.com/KimiNewt/pyshark), [mermaid.js](https://mermaid-js.github.io/mermaid/#/) and others default packaged python3 libraries.
 
 RTP exchanges are indicated only once, avoiding multiple useless lines. 
 
