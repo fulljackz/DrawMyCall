@@ -17,7 +17,7 @@ RTP exchanges are indicated only once, avoiding multiple useless lines.
 
 ```
 apt update && apt upgrade
-apt install npm --no-install-recommends
+apt install npm
 npm install mermaid.cli
 ```
 
