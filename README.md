@@ -5,7 +5,7 @@ If your pcap capture contains sip and rtp packets, the script will try to genera
 
 ![Wireshark example](./output/wireshark.png)
 
-The script massively use [pyshark](https://github.com/KimiNewt/pyshark), [mermaid.js](https://mermaid-js.github.io/mermaid/#/) and others default packaged python3 libraries.
+The script massively use tshark, [pyshark](https://github.com/KimiNewt/pyshark), [mermaid.js](https://mermaid-js.github.io/mermaid/#/) and others default packaged python3 libraries.
 
 RTP exchanges are indicated only once, avoiding multiple useless lines. 
 
@@ -23,11 +23,11 @@ npm install mermaid.cli
 
 > By default mermaid js script is located in `~/node_modules/.bin/mmdc`
 
-- Install pip and pyshark
+- Install git, tshark, pip and pyshark
 
 ```
 apt update
-apt install python3-pip
+apt install git tshark python3-pip --no-install-recommends
 pip3 install pyshark
 ```
 
