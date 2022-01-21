@@ -19,15 +19,17 @@
 # TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #
 
-import pyshark, sys, datetime, os, fileinput, subprocess, argparse
+import pyshark, sys, datetime, os, fileinput, subprocess, argparse, markdown
 
 def main(capture, time = "False"):
     # Set vars 
     mermaidConfig = os.getcwd() + "/mermaid-config.json"
     outName = os.path.basename(capture)
-    out = open(outName,'w')
+    out = open("./html/" + outName + ".html",'w')
     sequences = []
     timestamp = []
+    mermaidMarkdown = []
+    mm = ()
     i = 0
     
     # Key / value for pload (rtp)
@@ -70,15 +72,17 @@ def main(capture, time = "False"):
     
     # Get first ip of .pcap then write sequences list to file with mermaid synthax
     y = sequences[0][0]
-    out.write("{}".format("sequenceDiagram\n"))
+    mermaidMarkdown.append("{} {}".format("\n~~~mermaid\n", "sequenceDiagram\n"))
     for x in sequences:
-        out.write("{} {} {} {} {} {}".format(x[0], x[3], x[1], ":", x[2], "\n"))
+        mermaidMarkdown.append("{} {} {} {} {} {}".format(x[0], x[3], x[1], ":", x[2], "\n"))
         if time:
-            out.write("{} {} {} {} {}".format("Note left of ", y, ":", timestamp[i], "\n"))
+            mermaidMarkdown.append("{} {} {} {} {}".format("Note left of ", y, ":", timestamp[i], "\n"))
         i+=1
+    mermaidMarkdown.append("{} {}".format("\n~~~\n", '<script src="./mermaid.min.js"></script>'))
+    mm = "".join(mermaidMarkdown)
+    html = markdown.markdown(mm, extensions=['md_mermaid'])
+    out.write(html)
     out.close()
-    subprocess.run([os.path.expanduser( '~' ) + "/node_modules/.bin/mmdc", "-o", "./output/" + outName + ".png", "-i", outName, "-c", mermaidConfig])
-    os.remove(outName) 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
