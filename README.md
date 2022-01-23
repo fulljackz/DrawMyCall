@@ -13,8 +13,6 @@ RTP exchanges are indicated only once, avoiding multiple useless lines.
 
 > Tested on Ubuntu 20.10
 
-- Install git, tshark, pip and pyshark, markdown and md_mermaid
-
 ```
 apt update
 apt install git tshark python3-pip --no-install-recommends
