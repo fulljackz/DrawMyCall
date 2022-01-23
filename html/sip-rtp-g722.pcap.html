@@ -1,0 +1,15 @@
+<div class="mermaid">
+sequenceDiagram
+10.0.2.20 ->> 10.0.2.15 : INVITE
+10.0.2.15 ->> 10.0.2.20 : SIP/2.0 100 Trying
+10.0.2.15 ->> 10.0.2.20 : SIP/2.0 200 OK
+10.0.2.20 ->> 10.0.2.15 : ACK
+10.0.2.15 --> 10.0.2.20 : ITU-T G.722
+10.0.2.15 ->> 10.0.2.20 : BYE
+10.0.2.20 ->> 10.0.2.15 : SIP/2.0 200 OK
+
+</div>
+
+<script src="./mermaid.min.js"></script>
+
+<script>mermaid.initialize({startOnLoad:true});</script>

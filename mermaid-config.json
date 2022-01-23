@@ -1,9 +1,0 @@
-{
-    "theme": "forest",
-    "themeCSS": "",
-    "cloneCssStyles": false,
-    "sequence": {
-        "mirrorActors": false,
-        "useMaxWidth": false
-    }
-}

@@ -3,9 +3,9 @@
 Simple script to generate a call flow diagram from a pcap capture.
 If your pcap capture contains sip and rtp packets, the script will try to generate a diagram as Wireshark do :
 
-![Wireshark example](./output/wireshark.png)
+![Wireshark example](./img/wireshark.png)
 
-The script massively use tshark, [pyshark](https://github.com/KimiNewt/pyshark), [mermaid.js](https://mermaid-js.github.io/mermaid/#/) and others default packaged python3 libraries.
+The script massively use tshark, [pyshark](https://github.com/KimiNewt/pyshark), [python markdown](https://python-markdown.github.io/), [md_mermaid](https://github.com/oruelle/md_mermaid) and others default packaged python3 libraries.
 
 RTP exchanges are indicated only once, avoiding multiple useless lines. 
 
@@ -13,22 +13,10 @@ RTP exchanges are indicated only once, avoiding multiple useless lines.
 
 > Tested on Ubuntu 20.10
 
-- Install npm and mermaid.js.
-
-```
-apt update && apt upgrade
-apt install npm
-npm install mermaid.cli
-```
-
-> By default mermaid js script is located in `~/node_modules/.bin/mmdc`
-
-- Install git, tshark, pip and pyshark
-
 ```
 apt update
 apt install git tshark python3-pip --no-install-recommends
-pip3 install pyshark
+pip3 install pyshark markdown md-mermaid
 ```
 
 - Clone this repo and give a try
@@ -61,9 +49,9 @@ required arguments:
 ./drawmycall.py -f pcap_samples/SIP_CALL_RTP_G711
 ```
 
-- Should produce something in `./output/` like :
+- Should produce a html file in `./html/` like :
 
-![Mermaid example](./output/sip-rtp-g722.pcap.png)
+![Mermaid example](./img/mermaid.png)
 
 - Generate diagram with time informations on the left
 
@@ -73,7 +61,7 @@ required arguments:
 
 - Should produce somethinkg like :
 
-![Mermaid example with time](./output/sip-rtp-g722.pcap-time.png)
+![Mermaid example with time](./img/mermaid-time.png)
 
 > Pcap samples are availble from wireshark web page : https://wiki.wireshark.org/SampleCaptures#sip-and-rtp
 
@@ -81,3 +69,4 @@ required arguments:
 ## Todo
 
 - Improve diagrams for captures containing multiple sip and rtp streams.
+- Improve setup
