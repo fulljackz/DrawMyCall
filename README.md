@@ -11,7 +11,9 @@ RTP exchanges are indicated only once, avoiding multiple useless lines.
 
 ## Setup env 
 
-> Tested on Ubuntu 20.10
+> Tested on Ubuntu 20.10 and Debian 11.2
+
+- Install requirements
 
 ```
 apt update
