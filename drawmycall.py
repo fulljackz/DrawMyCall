@@ -32,21 +32,6 @@ def main(capture, time = "False"):
     mm = ()
     i = 0
     
-    # Key / value for pload (rtp)
-    pload = {
-        "0": "ITU-T G.711 PCMU",
-        "5": "DVI4 8000 samples/s",
-        "6": "DVI4 16000 samples/s",
-        "8": "ITU-T G.711 PCMA",
-        "9": "ITU-T G.722",
-        "99": "G726-16",
-        "99": "iLBC",
-        "99": "L16",
-        "99": "opus",
-        "99": "speex",
-        "126": "DynamicRTP-Type-126"
-    }
-
     # Then run main
     pcapFile = pyshark.FileCapture(capture)
     # Parse .pcap 
@@ -54,7 +39,7 @@ def main(capture, time = "False"):
         # check if packet has rtp attribute
         if hasattr(num, 'rtp') and int(num.length) >= 100:
             diff = "-->"
-            diagSeq = [num['IP'].src, num['IP'].dst, pload[num['RTP'].p_type], diff, num['RTP'].ssrc, num['UDP'].stream, num['RTP'].p_type ]
+            diagSeq = [num['IP'].src, diff, num['IP'].dst, diff, num['RTP'].p_type.showname]
         
         # check if packet has sip attribute
         if hasattr(num, 'sip'):
@@ -63,7 +48,7 @@ def main(capture, time = "False"):
                 status = num['sip'].status_line
             else:
                 status = num['sip'].method
-            diagSeq = [num['IP'].src, num['IP'].dst, status, diff, "", "", num['SIP'].via ]
+            diagSeq = [num['IP'].src, diff, num['IP'].dst, diff, status]
 
         # Append to sequences only if diagSeq(sip or rtp) is not in sequences (avoid duplicates flaws)
         if diagSeq not in sequences:
@@ -74,7 +59,7 @@ def main(capture, time = "False"):
     y = sequences[0][0]
     mermaidMarkdown.append("{} {}".format("\n~~~mermaid\n", "sequenceDiagram\n"))
     for x in sequences:
-        mermaidMarkdown.append("{} {} {} {} {} {}".format(x[0], x[3], x[1], ":", x[2], "\n"))
+        mermaidMarkdown.append("{} {} {} {} {} {}".format(x[0], x[1], x[2], ":", x[4], "\n"))
         if time:
             mermaidMarkdown.append("{} {} {} {} {}".format("Note left of ", y, ":", timestamp[i], "\n"))
         i+=1
