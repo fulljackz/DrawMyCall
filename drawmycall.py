@@ -23,7 +23,6 @@ import pyshark, sys, datetime, os, fileinput, subprocess, argparse, markdown
 
 def main(capture, time = "False"):
     # Set vars 
-    mermaidConfig = os.getcwd() + "/mermaid-config.json"
     outName = os.path.basename(capture)
     out = open("./html/" + outName + ".html",'w')
     sequences = []
