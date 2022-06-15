@@ -71,4 +71,3 @@ required arguments:
 ## Todo
 
 - Improve diagrams for captures containing multiple sip and rtp streams.
-- Improve setup
