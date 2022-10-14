@@ -38,11 +38,12 @@ cd DrawMyCall
 usage: drawmycall.py [-h] -f FILE [-t]
 
 optional arguments:
-  -h, --help            show this help message and exit
+  -h, --help            Show this help message and exit
   -t, --time            Add time on diagram
 
 required arguments:
-  -f FILE, --file FILE  path to your pcap file
+  -f FILE, --file FILE  Path to your pcap file
+  -o OUTPUT, --output   Path to output file 
 ```
 
 - Generate diagram

@@ -21,10 +21,10 @@
 
 import pyshark, sys, datetime, os, fileinput, subprocess, argparse, markdown
 
-def main(capture, time = "False"):
+def main(capture, outputFile, time = "False"):
     # Set vars 
     outName = os.path.basename(capture)
-    out = open("./html/" + outName + ".html",'w')
+    out = open(outputFile,'w')
     sequences = []
     timestamp = []
     mermaidMarkdown = []
@@ -73,7 +73,8 @@ if __name__ == "__main__":
     # Show args as required : https://bugs.python.org/issue9694
     req_grp = parser.add_argument_group(title='required arguments')
     req_grp.add_argument("-f", "--file", required=True, help="path to your pcap file")
+    parser.add_argument("-o", "--output", required=True, help="path to output results")
     parser.add_argument("-t", "--time", help="Add time on diagram",
             action="store_true")
     args = parser.parse_args()
-    main(args.file, args.time)
+    main(args.file, args.output, args.time)
