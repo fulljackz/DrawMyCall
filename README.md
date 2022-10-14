@@ -26,7 +26,7 @@ pip3 install pyshark markdown md-mermaid
 ```
 git clone https://github.com/fulljackz/DrawMyCall.git
 cd DrawMyCall
-./drawmycall.py -t /path/to/pcap
+./drawmycall.py -f /path/to/pcap -o /path/to/output.html
 ```
 
 ## How it works
@@ -49,17 +49,17 @@ required arguments:
 - Generate diagram
 
 ```
-./drawmycall.py -f pcap_samples/SIP_CALL_RTP_G711
+./drawmycall.py -f pcap_samples/SIP_CALL_RTP_G711 -o ./html/SIP_CALL_RTP_G711.html
 ```
 
-- Should produce a html file in `./html/` like :
+- Should produce a SIP_CALL_RTP_G711.html file in `./html/` like :
 
 ![Mermaid example](./img/mermaid.png)
 
 - Generate diagram with time informations on the left
 
 ```
-./drawmycall.py -f pcap_samples/SIP_CALL_RTP_G711 -t
+./drawmycall.py -f pcap_samples/SIP_CALL_RTP_G711 -o ./html/SIP_CALL_RTP_G711.html -t
 ```
 
 - Should produce somethinkg like :
